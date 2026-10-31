@@ -3,16 +3,19 @@
 A C++ simulator of virtual-to-physical address translation with a direct-mapped page table, a
 2-level page table, a 16-entry LRU TLB and simulated page faults, plus a LaTeX report.
 
-## ✅ What's left to do
+## ✅ Status
 
-1. Take the 11 screenshots in the [table below](#-screenshots) and save them in `report/screenshots/`.
-2. Rebuild the report and the submission folder:
-   ```bash
-   cd ~/Lab-8-Caching-TLB-and-Multi-level-Page-Tables
-   make submission
-   ```
-3. Open `submission/report.pdf` and check that no "Screenshot missing" boxes remain.
-4. Drag the 5 files in `submission/` into Canvas, individually and not zipped.
+The lab is finished and all 11 screenshots are in the report. Drag the 5 files in `submission/`
+into Canvas, individually and not zipped.
+
+If you change anything, rebuild the report and the submission folder:
+
+```bash
+cd ~/Lab-8-Caching-TLB-and-Multi-level-Page-Tables
+make submission
+```
+
+It should print `Screenshots found: 11 of 11`.
 
 ## 📁 Folder layout
 
@@ -33,8 +36,11 @@ Lab-8-Caching-TLB-and-Multi-level-Page-Tables/
 ├── report/
 │   ├── report.tex               LaTeX source for the report
 │   ├── report.pdf               The built report
-│   ├── data/                    Numbers for the tables and graphs, written by make data
-│   └── screenshots/             ← PUT YOUR 11 PNG SCREENSHOTS HERE
+│   ├── data/                    Numbers for the tables and graphs, explained below
+│   │   ├── metrics.tex          Single values used in the summary tables and explanations
+│   │   ├── tlb_size.csv         TLB size experiment
+│   │   └── working_set.csv      Working set experiment
+│   └── screenshots/             The 11 PNG screenshots used by the report
 ├── Makefile                     Shortcuts, listed below
 ├── .gitignore
 └── README.md
@@ -97,12 +103,29 @@ Run these from the repo root:
 | `make submission` | Rebuilds the report, refreshes `submission/` and removes the compiled programs |
 | `make clean` | Removes the compiled programs and `src/addresses.txt` (`make` recreates it) |
 
+## 🗂️ The `report/data` folder
+
+These files hold the numbers behind the report's tables and graphs. LaTeX can't run the program,
+so the program saves its results here and `report.tex` reads them. That keeps the report's numbers
+tied to the program's output.
+
+| File | What it holds | Where it's used |
+|------|---------------|-----------------|
+| `tlb_size.csv` | Hit rate and cycles for 4, 8, 16 and 32 entries, on both traces | Section 5 table and graphs |
+| `working_set.csv` | Hit rate and fault rate for 4 to 1024 pages | Section 4 table and graph |
+| `metrics.tex` | Single values, such as `\MetricHitRate` | Summary tables and numbers in the explanations |
+
+- `make data` overwrites all three, so don't edit them by hand. It's only needed after changing
+  the simulator, then run `make submission` to update the report.
+- The folder doesn't go on Canvas, because its contents are built into `report.pdf`. Keep it in
+  the repo, because the report won't compile without it.
+
 ## 📸 Screenshots
 
-Enlarge the terminal, press **Ctrl+L** to clear it, paste the commands, then capture from the
-last command line down to the end of its output. On Windows, **Win+Shift+S** takes the capture.
-Save each one in `report/screenshots/` with the exact file name below, and the report
-places it in the right section automatically. Until then, the report shows a
+All 11 are taken and saved in `report/screenshots/`. To retake one, enlarge the terminal, press
+**Ctrl+L** to clear it, paste the commands, then capture from the last command line down to the
+end of its output. On Windows, **Win+Shift+S** takes the capture. Save it with the exact file name
+below, and the report places it in the right section automatically. A missing file shows as a
 "Screenshot missing" box.
 
 | # | File name | Report section | Capture this |
@@ -121,7 +144,7 @@ places it in the right section automatically. Until then, the report shows a
 
 ### Commands for each screenshot
 
-Run `01_build.png` first, because it compiles the `lab` program the others use.
+Run the `01_build.png` commands first, because they compile the `lab` program the others use.
 
 **01_build.png**
 ```bash
