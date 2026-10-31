@@ -1,0 +1,14 @@
+# compiled programs
+src/lab
+src/generate
+
+# LaTeX build files (report.pdf is kept)
+report/*.aux
+report/*.log
+report/*.fls
+report/*.fdb_latexmk
+report/*.out
+report/*.toc
+report/*.lof
+report/*.lot
+report/*.synctex.gz
