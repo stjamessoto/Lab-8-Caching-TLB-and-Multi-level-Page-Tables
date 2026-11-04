@@ -58,6 +58,27 @@ Lab-8-Caching-TLB-and-Multi-level-Page-Tables/
 
 All five are in `submission/`.
 
+## ☑️ Handout checklist
+
+Where each requirement and rubric item is covered:
+
+| Requirement | Code (`main.cpp`) | Report section |
+|-------------|-------------------|----------------|
+| Part 1: direct-mapped table, 1M entries | `translate_direct` | 3.2 |
+| Part 2: 2-level page table (20 pts) | `PageDirectoryEntry`, `translate_2level` | 1.1, 3.3 |
+| Part 3: 16-entry TLB with LRU (25 pts) | `class TLB` (`lookup`, `insert`) | 1.2, 2.2, 3.4 |
+| Part 4: 256 frames, page faults, random eviction (15 pts) | `allocate_frame`, `handle_page_fault`, `invalidate_random_page` | 2.1, 3.6 |
+| `PAGE FAULT: VA 0x... → evicted frame X` | `handle_page_fault` | 3.6 |
+| Diagram, TLB and LRU design, VA → PA flowchart | | 1.1, 1.2, 1.3 |
+| First 10 and last 10 lines, page faults, hit rate screenshots | | 3.5, 3.6, 3.7 |
+| Performance metrics table (10 pts) | `print_summary` | 4.1 |
+| Translation time with and without the TLB | `measure_avg_us` | 4.2 |
+| TLB hit rate vs working set size | `run_experiments` | 4.3 |
+| TLB size 4, 8, 16, 32: table and graph | `run_experiments` | 5 |
+| Questions 1-3 | | 6 |
+| Hit rate averaged over several runs (tip) | `--runs` | 3.7 |
+| Address trace with locality (tip) | `make_locality_trace` | 4.1, 5 |
+
 ## 🔧 Setup (Ubuntu / WSL)
 
 ```bash
